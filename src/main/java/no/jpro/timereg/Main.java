@@ -1,5 +1,6 @@
 package no.jpro.timereg;
 
+import com.fasterxml.jackson.jaxrs.json.JacksonJaxbJsonProvider;
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
@@ -29,6 +30,8 @@ public class Main {
         // dependency on jersey-media-json module in pom.xml)
         // --
         // rc.addBinder(org.glassfish.jersey.media.json.JsonJaxbBinder);
+
+        rc.register(JacksonJaxbJsonProvider.class);
 
         // create and start a new instance of grizzly http server
         // exposing the Jersey application at BASE_URI

@@ -46,4 +46,10 @@ public class TimeRegServiceTest {
         String responseMsg = target.path("api/timeregistreringer").queryParam("aar","2013").request().get(String.class);
         assertEquals("{\"id\": 123, \"dato\": \"2013-06-01T00:00:00Z\", \"timer\": 8, \"kommentar\": \"\"}", responseMsg);
     }
+
+    @Test
+    public void testFinnRegistrertTimeforing() {
+        String responseMsg = target.path("api/timeregistrering/145").request().get(String.class);
+        assertEquals("145", responseMsg);
+    }
 }
