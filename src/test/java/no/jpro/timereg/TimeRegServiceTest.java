@@ -42,9 +42,8 @@ public class TimeRegServiceTest {
      * Test to see that the message "Got it!" is sent in the response.
      */
     @Test
-    @Ignore
-    public void testGetIt() {
-        String responseMsg = target.path("api").request().get(String.class);
+    public void testRegistrereTimer() {
+        String responseMsg = target.path("api/timeregistreringer").queryParam("aar","2013").request().get(String.class);
         assertEquals("{\"id\": 123, \"dato\": \"2013-06-01T00:00:00Z\", \"timer\": 8, \"kommentar\": \"\"}", responseMsg);
     }
 }
