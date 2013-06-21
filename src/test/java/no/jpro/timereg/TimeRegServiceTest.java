@@ -10,6 +10,8 @@ import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 
 public class TimeRegServiceTest {
@@ -43,13 +45,13 @@ public class TimeRegServiceTest {
      */
     @Test
     public void testRegistrereTimer() {
-        String responseMsg = target.path("api/timeregistreringer").queryParam("aar","2013").request().get(String.class);
-        assertEquals("{\"id\": 123, \"dato\": \"2013-06-01T00:00:00Z\", \"timer\": 8, \"kommentar\": \"\"}", responseMsg);
+        List responseMsg = target.path("api/timeregistreringer").queryParam("aar", "2013").request().get(List.class);
+        assertEquals(2, responseMsg.size());
     }
 
     @Test
     public void testFinnRegistrertTimeforing() {
-        String responseMsg = target.path("api/timeregistrering/145").request().get(String.class);
-        assertEquals("145", responseMsg);
+        Timeregistrering timeregistrering = target.path("api/timeregistrering/145").request().get(Timeregistrering.class);
+        assertEquals("145", timeregistrering.getId());
     }
 }

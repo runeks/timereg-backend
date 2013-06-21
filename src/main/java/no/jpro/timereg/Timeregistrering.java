@@ -8,6 +8,9 @@ package no.jpro.timereg;
 public class Timeregistrering {
     private String id;
 
+    public Timeregistrering() {
+    }
+
     public Timeregistrering(String id) {
         this.id = id;
     }
